@@ -148,8 +148,8 @@ Module UtilityFunctions
         'Draw the ships
         For Each s As Ship In thePlayer
             If s Is Nothing OrElse Not s.IsDeployed Then Continue For
-            rowTop = top + (cellGap + cellHeight) * s.Row + SHIP_GAP
-            colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP
+            rowTop = top + (cellGap + cellHeight) * s.Row + SHIP_GAP - 2
+            colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP - 2
 
             If s.Direction = Direction.UpDown Then
                 rowTop -= (s.Size - 1) * (cellGap + cellHeight)
