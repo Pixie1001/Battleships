@@ -1,0 +1,9 @@
+C:\Users\Stephen\Downloads\battleships\battleships\obj\x86\Debug\Battleship_VS.vbprojResolveAssemblyReference.cache
+C:\Users\Stephen\Downloads\battleships\battleships\obj\x86\Debug\Battleship_VS.vbproj.CoreCompileInputs.cache
+C:\Users\Stephen\Downloads\battleships\battleships\bin\Debug\lib\SwinGame.dll.mdb
+C:\Users\Stephen\Downloads\battleships\battleships\bin\Debug\ConsoleApplication.exe
+C:\Users\Stephen\Downloads\battleships\battleships\bin\Debug\ConsoleApplication.pdb
+C:\Users\Stephen\Downloads\battleships\battleships\bin\Debug\SwinGame.dll
+C:\Users\Stephen\Downloads\battleships\battleships\obj\x86\Debug\Battleship_VS.vbproj.CopyComplete
+C:\Users\Stephen\Downloads\battleships\battleships\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\Stephen\Downloads\battleships\battleships\obj\x86\Debug\ConsoleApplication.pdb
