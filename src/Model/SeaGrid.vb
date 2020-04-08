@@ -85,7 +85,7 @@ Public Class SeaGrid
     Public Sub New(ByVal ships As Dictionary(Of ShipName, Ship))
         'fill array with empty Tiles
         Dim i as Integer
-For i  = 0 To Width - 1
+        For i = 0 To Width - 1
             For j As Integer = 0 To Height - 1
                 _GameTiles(i, j) = New Tile(i, j, Nothing)
             Next
@@ -131,7 +131,7 @@ For i  = 0 To Width - 1
 
             'place ship's tiles in array and into ship object
             Dim i as Integer
-For i  = 0 To size - 1
+            For i = 0 To size - 1
                 If currentRow < 0 Or currentRow >= Width Or currentCol < 0 Or currentCol >= Height Then
                     Throw New InvalidOperationException("Ship can't fit on the board")
                 End If
@@ -139,7 +139,7 @@ For i  = 0 To size - 1
                 _GameTiles(currentRow, currentCol).Ship = newShip
 
                 currentCol += dCol
-                currentRow += dRow
+                currentRow -= dRow      'Bookmark - direction debug
             Next
 
             newShip.Deployed(direction, row, col)

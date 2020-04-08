@@ -25,7 +25,7 @@ Public Module GameResources
 
         'Ships
         Dim i as Integer
-For i  = 1 To 5
+        For i = 1 To 5
             NewImage("ShipLR" & i, "ship_deploy_horiz_" & i & ".png")
             NewImage("ShipUD" & i, "ship_deploy_vert_" & i & ".png")
         Next

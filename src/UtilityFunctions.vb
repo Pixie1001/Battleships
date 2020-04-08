@@ -151,6 +151,10 @@ Module UtilityFunctions
             rowTop = top + (cellGap + cellHeight) * s.Row + SHIP_GAP
             colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP
 
+            If s.Direction = Direction.UpDown Then
+                rowTop -= (s.Size - 1) * (cellGap + cellHeight)
+            End If
+
             If s.Direction = Direction.LeftRight Then
                 shipName = "ShipLR" & s.Size
                 shipHeight = cellHeight - (SHIP_GAP * 2)
@@ -158,7 +162,7 @@ Module UtilityFunctions
             Else
                 'Up down
                 shipName = "ShipUD" & s.Size
-                shipHeight = (cellHeight + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap
+                shipHeight = (cellHeight + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap     'Bookmark - ship orientation
                 shipWidth = cellWidth - (SHIP_GAP * 2)
             End If
 
