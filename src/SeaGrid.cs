@@ -152,7 +152,7 @@ public partial class SeaGrid : ISeaGrid
             var loopTo = size - 1;
             for (i = 0; i <= loopTo; i++)
             {
-                if (currentRow < 0 | currentRow >= Width | currentCol < 0 | currentCol >= Height)
+                if (currentRow < 0 || currentRow >= Width || currentCol < 0 || currentCol >= Height)
                 {
                     throw new InvalidOperationException("Ship can't fit on the board");
                 }
