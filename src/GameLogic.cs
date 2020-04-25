@@ -1,8 +1,8 @@
 using SwinGameSDK;
 
 namespace battleship {
-    class GameLogic {
-        public void Main() {
+    public class GameLogic {
+        public static void Main() {
             // Opens a new Graphics Window
             SwinGame.OpenGraphicsWindow("Battle Ships", 800, 600);
 
