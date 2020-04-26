@@ -103,7 +103,7 @@ namespace battleship {
         /// <param name="ship">the ship selected</param>
         /// <param name="direction">the direction the ship is going</param>
         public void MoveShip(int row, int col, ShipName ship, Direction direction) {
-            var newShip = this._Ships(ship);
+            var newShip = _Ships[ship];
             newShip.Remove();
             AddShip(row, col, direction, newShip);
         }
@@ -121,7 +121,7 @@ namespace battleship {
                 int currentRow = row;
                 int currentCol = col;
                 int dRow, dCol;
-                if (direction == direction.LeftRight) {
+                if (direction == Direction.LeftRight) {
                     dRow = 0;
                     dCol = 1;
                 }
