@@ -15,10 +15,10 @@ using SwinGameSDK;
 namespace battleship {
     public static class GameResources {
 
-        private static Dictionary<string, Bitmap> _Images;
-        private static Dictionary<string, Font> _Fonts;
-        private static Dictionary<string, SoundEffect> _Sounds;
-        private static Dictionary<string, Music> _Music;
+        private static Dictionary<string, Bitmap> _Images = new Dictionary<string, Bitmap>();
+        private static Dictionary<string, Font> _Fonts = new Dictionary<string, Font>();
+        private static Dictionary<string, SoundEffect> _Sounds = new Dictionary<string, SoundEffect>();
+        private static Dictionary<string, Music> _Music = new Dictionary<string, Music>();
 
         private static Bitmap _Background;
         private static Bitmap _Animation;
@@ -28,8 +28,6 @@ namespace battleship {
         private static SoundEffect _StartSound;
 
         private static void LoadFonts() {
-            _Fonts = new Dictionary<string, Font>();
-
             NewFont("ArialLarge", "arial.ttf", 80);
             NewFont("Courier", "cour.ttf", 14);
             NewFont("CourierSmall", "cour.ttf", 8);
@@ -37,7 +35,6 @@ namespace battleship {
         }
 
         private static void LoadImages() {
-            _Images = new Dictionary<string, Bitmap>();
             // Backgrounds
             NewImage("Menu", "main_page.jpg");
             NewImage("Discovery", "discover.jpg");
@@ -63,8 +60,6 @@ namespace battleship {
         }
 
         private static void LoadSounds() {
-            _Sounds = new Dictionary<string, SoundEffect>();
-
             NewSound("Error", "error.wav");
             NewSound("Hit", "hit.wav");
             NewSound("Sink", "sink.wav");
@@ -75,8 +70,6 @@ namespace battleship {
         }
 
         private static void LoadMusic() {
-            _Music = new Dictionary<string, Music>();
-
             NewMusic("Background", "horrordrone.mp3");
         }
 
@@ -229,7 +222,7 @@ namespace battleship {
             SwinGame.FreeBitmap(_Animation);
             SwinGame.FreeBitmap(_LoaderEmpty);
             SwinGame.FreeBitmap(_LoaderFull);
-            Audio.FreeSoundEffect(_StartSound);
+            //Audio.FreeSoundEffect(_StartSound);
             SwinGame.ChangeScreenSize(width, height);
         }
 
@@ -281,7 +274,7 @@ namespace battleship {
             FreeFonts();
             FreeImages();
             FreeMusic();
-            FreeSounds();
+            //FreeSounds();
             SwinGame.ProcessEvents();
         }
     }
