@@ -109,7 +109,7 @@ namespace battleship {
                         GameController.HumanPlayer.PlayerGrid.MoveShip(row, col, _selectedShip, _currentDirection); // Bookmark - ship is being placed wrong. When set to updown, should place from bottom of ship
                     }
                     catch (Exception ex) {
-                        Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+                        GameResources.PlaySound("Error");
                         UtilityFunctions.Message = ex.Message;
                     }
                 }

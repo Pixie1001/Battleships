@@ -86,3 +86,5 @@ C:\Users\Stephen\Documents\GitHub\Battleship\bin\Debug\Resources\sounds\sink.wav
 C:\Users\Stephen\Documents\GitHub\Battleship\bin\Debug\Resources\sounds\SwinGameStart.ogg
 C:\Users\Stephen\Documents\GitHub\Battleship\bin\Debug\Resources\sounds\watershot.wav
 C:\Users\Stephen\Documents\GitHub\Battleship\bin\Debug\Resources\sounds\winner.wav
+C:\Users\Stephen\Documents\GitHub\Battleship\bin\Debug\NAudio.dll
+C:\Users\Stephen\Documents\GitHub\Battleship\bin\Debug\NAudio.xml
