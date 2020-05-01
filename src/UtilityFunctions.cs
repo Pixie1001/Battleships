@@ -179,8 +179,12 @@ namespace battleship {
             foreach (Ship s in thePlayer) {
                 if (s == null || !s.IsDeployed)
                     continue;
-                rowTop = top + (cellGap + cellHeight) * s.Row + SHIP_GAP;
-                colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP;
+                rowTop = top + (cellGap + cellHeight) * s.Row + SHIP_GAP - 2;
+                colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP - 2;
+
+                if (s.Direction == Direction.UpDown) {
+                    rowTop -= (s.Size - 1) * (cellGap + cellHeight);
+                }
 
                 if (s.Direction == Direction.LeftRight) {
                     shipName = "ShipLR" + s.Size;

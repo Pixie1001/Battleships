@@ -9,12 +9,11 @@ namespace battleship {
             // Load Resources
             GameResources.LoadResources();
 
-            SwinGame.PlayMusic(GameResources.GameMusic("Background"));
-
             GameController.Boot();
 
             // Game Loop
             do {
+                GameResources.PlayMusic("Background");
                 GameController.HandleUserInput();
                 GameController.DrawScreen();
             }

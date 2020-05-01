@@ -140,7 +140,7 @@ namespace battleship {
 
                     _GameTiles[currentRow, currentCol].Ship = newShip;
                     currentCol += dCol;
-                    currentRow += dRow;
+                    currentRow -= dRow;
                 }
 
                 newShip.Deployed(direction, row, col);

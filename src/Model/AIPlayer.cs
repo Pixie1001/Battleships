@@ -133,12 +133,12 @@ namespace battleship {
         ///     ''' </summary>
         private void Delay() {
             int i;
-            for (i = 0; i <= 150; i++) {
+            for (i = 0; i <= 5; i++) {
                 // Dont delay if window is closed
                 if (SwinGame.WindowCloseRequested())
                     return;
 
-                SwinGame.Delay(5);
+                //SwinGame.Delay(1);  //CHANGED - 5 -> 1
                 SwinGame.ProcessEvents();
                 SwinGame.RefreshScreen();
             }

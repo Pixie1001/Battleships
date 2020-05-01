@@ -20,16 +20,18 @@ namespace battleship {
         private static Dictionary<string, Bitmap> _images = new Dictionary<string, Bitmap>();
         private static Dictionary<string, Font> _fonts = new Dictionary<string, Font>();
         private static Dictionary<string, WaveFileReader> _sounds = new Dictionary<string, WaveFileReader>();
-        private static Dictionary<string, Music> _music = new Dictionary<string, Music>();
+        private static Dictionary<string, Mp3FileReader> _music = new Dictionary<string, Mp3FileReader>();
 
         private static Bitmap _background;
         private static Bitmap _animation;
         private static Bitmap _loaderFull;
         private static Bitmap _loaderEmpty;
         private static Font _loadingFont;
-        private static SoundEffect _startSound;
+
+        private static string _loopedSong = "";
 
         private static WaveOutEvent _audioPlayer = new WaveOutEvent();
+        private static WaveOutEvent _musicPlayer = new WaveOutEvent();
 
         public static WaveOutEvent AudioPlayer {
             get {
@@ -119,7 +121,7 @@ namespace battleship {
         ///     ''' <param name="music">Name of music</param>
         ///     ''' <returns>The music with this name</returns>
 
-        public static Music GameMusic(string music) {
+        public static Mp3FileReader GameMusic(string music) {
             return _music[music];
         }
 
@@ -165,6 +167,28 @@ namespace battleship {
             _audioPlayer.Stop();
             _audioPlayer.Init(_sounds[soundEffectName]);
             _audioPlayer.Play();
+
+            if (soundEffectName == "Sink") {
+                while (_audioPlayer.PlaybackState == PlaybackState.Playing) {
+                    SwinGame.Delay(10);
+                    SwinGame.RefreshScreen();
+                }
+            }
+        }
+
+        public static void PlayMusic(string musicName) {
+            //_sounds[musicName].CurrentTime = TimeSpan.FromSeconds(0.0);
+            //_audioPlayer.Stop();
+            //_audioPlayer.Init(_sounds[soundEffectName]);
+            //_audioPlayer.Play();
+
+            if (_loopedSong == musicName && _musicPlayer.PlaybackState == PlaybackState.Playing) {
+                return;
+            }
+
+            _loopedSong = musicName;
+            _musicPlayer.Init(_music[musicName]);
+            _musicPlayer.Play();
         }
 
         private static void ShowLoadingScreen() {
@@ -175,10 +199,9 @@ namespace battleship {
 
             _animation = SwinGame.LoadBitmap(SwinGame.PathToResource("SwinGameAni.jpg", ResourceKind.BitmapResource));
             _loadingFont = SwinGame.LoadFont(SwinGame.PathToResource("arial.ttf", ResourceKind.FontResource), 12);
-            _startSound = Audio.LoadSoundEffect(SwinGame.PathToResource("SwinGameStart.ogg", ResourceKind.SoundResource));
-
             _loaderFull = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_full.png", ResourceKind.BitmapResource));
             _loaderEmpty = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_empty.png", ResourceKind.BitmapResource));
+            NewSound("Start", "SwinGameStart.wav");
 
             PlaySwinGameIntro();
         }
@@ -186,7 +209,7 @@ namespace battleship {
         private static void PlaySwinGameIntro() {
             const int ANI_CELL_COUNT = 11;
 
-            Audio.PlaySoundEffect(_startSound);
+            PlaySound("Start");
             SwinGame.Delay(200);
 
             int i;
@@ -269,7 +292,8 @@ namespace battleship {
         }
 
         private static void NewMusic(string musicName, string filename) {
-            _music.Add(musicName, Audio.LoadMusic(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
+            Mp3FileReader file = new Mp3FileReader("./Resources/sounds/" + filename);
+            _music.Add(musicName, file);
         }
 
         private static void FreeFonts() {
@@ -287,18 +311,19 @@ namespace battleship {
             foreach (Wave obj in _sounds.Values)
                 obj.Dispose();
         }
-        */
 
         private static void FreeMusic() {
-            foreach (Music obj in _music.Values)
+            foreach (Wave obj in _music.Values)
                 Audio.FreeMusic(obj);
         }
+        */
 
         public static void FreeResources() {
             FreeFonts();
             FreeImages();
-            FreeMusic();
+            //FreeMusic();
             //FreeSounds();
+            _musicPlayer.Dispose();
             _audioPlayer.Dispose();
             SwinGame.ProcessEvents();
         }

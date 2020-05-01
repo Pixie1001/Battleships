@@ -92,17 +92,17 @@ namespace battleship {
                 case AIOption.Medium: {
                         _ai = new AIMediumPlayer(_theGame);
                         break;
-                    }
+                }
 
                 case AIOption.Hard: {
                         _ai = new AIHardPlayer(_theGame);
                         break;
-                    }
+                }
 
                 default: {
                         _ai = new AIHardPlayer(_theGame); // ERROR - should set to default AI or a new easy AI setting
                         break;
-                    }
+                }
             }
 
             _human = new Player(_theGame);
@@ -180,12 +180,6 @@ namespace battleship {
                 case ResultOfAttack.GameOver: {
                         PlayHitSequence(result.Row, result.Column, isHuman);
                         GameResources.PlaySound("Sink");
-
-                        //while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink"))) {
-                        while (GameResources.AudioPlayer.PlaybackState == PlaybackState.Playing) {
-                            SwinGame.Delay(10);
-                            SwinGame.RefreshScreen();
-                        }
 
                         if (HumanPlayer.IsDestroyed)
                             GameResources.PlaySound("Lose");
