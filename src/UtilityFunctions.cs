@@ -50,6 +50,7 @@ namespace battleship {
         public static int FRAMES_PER_CELL = 8;
 
         private static string _message;
+        private static bool _mute = false;
         private static List<Sprite> _Animations = new List<Sprite>();
 
         /// <summary>
@@ -60,6 +61,7 @@ namespace battleship {
         ///     ''' <param name="w">the width to check</param>
         ///     ''' <param name="h">the height to check</param>
         ///     ''' <returns>true if the mouse is in the area checked</returns>
+
         public static bool IsMouseInRectangle(int x, int y, int w, int h) {
             Point2D mouse;
             bool result = false;
@@ -311,6 +313,41 @@ namespace battleship {
             for (i = 1; i <= ANIMATION_CELLS * FRAMES_PER_CELL; i++) {
                 UpdateAnimations();
                 GameController.DrawScreen();
+            }
+        }
+
+        //Draw mute botton on screen
+        public static void DrawMuteButton() {
+            //SwinGame.DrawRectangle(Color.AliceBlue, 755, 10, 37, 28);
+
+            if (_mute) {
+                SwinGame.DrawBitmap(GameResources.GameImage("SoundOff"), 755, 10);
+            } else {
+                SwinGame.DrawBitmap(GameResources.GameImage("SoundOn"), 755, 10);
+            }
+        }
+
+        //Handle click detection for mute button
+        public static void HandleMuteButton() {
+            if (SwinGame.MouseClicked(MouseButton.LeftButton) && IsMouseInRectangle(755, 10, 37, 28)) {
+                if (_mute) {
+                    ToggleMute(false);
+                }
+                else {
+                    ToggleMute(true);
+                }
+            }
+        }
+
+        //Handle click detection for mute button
+        private static void ToggleMute(bool mute) {
+            _mute = mute;
+            if (_mute) {
+                GameResources.AudioPlayer.Volume = 0;
+                GameResources.MusicPlayer.Volume = 0;
+            } else {
+                GameResources.AudioPlayer.Volume = 1;
+                GameResources.MusicPlayer.Volume = 1;
             }
         }
     }

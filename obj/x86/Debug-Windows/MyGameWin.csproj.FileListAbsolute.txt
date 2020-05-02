@@ -151,3 +151,5 @@ C:\Users\Stephen\Documents\GitHub\Battleship_NAudio\obj\x86\Debug-Windows\MyGame
 C:\Users\Stephen\Documents\GitHub\Battleship_NAudio\obj\x86\Debug-Windows\MyGameWin.csproj.CoreCompileInputs.cache
 C:\Users\Stephen\Documents\GitHub\Battleship_NAudio\obj\x86\Debug-Windows\MyGame.exe
 C:\Users\Stephen\Documents\GitHub\Battleship_NAudio\obj\x86\Debug-Windows\MyGame.pdb
+C:\Users\Stephen\Documents\GitHub\Battleship_NAudio\bin\Debug\Resources\images\sound_icon_disabled.png
+C:\Users\Stephen\Documents\GitHub\Battleship_NAudio\bin\Debug\Resources\images\sound_icon_enabled.png

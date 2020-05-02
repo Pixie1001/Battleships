@@ -319,6 +319,7 @@ namespace battleship {
                     }
             }
 
+            UtilityFunctions.HandleMuteButton();
             UtilityFunctions.UpdateAnimations();
         }
 
@@ -369,6 +370,7 @@ namespace battleship {
             }
 
             UtilityFunctions.DrawAnimations();
+            UtilityFunctions.DrawMuteButton();
 
             SwinGame.RefreshScreen();
         }

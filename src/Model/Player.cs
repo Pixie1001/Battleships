@@ -188,7 +188,6 @@ namespace battleship {
         /// <param name="col">the column to attack</param>
         /// <returns>the result of the attack</returns>
         internal AttackResult Shoot(int row, int col) {
-            _shots += 1;
             AttackResult result;
             result = EnemyGrid.HitTile(row, col);
             var switchExpr = result.Value;
@@ -196,11 +195,13 @@ namespace battleship {
                 case var @case when @case == ResultOfAttack.Destroyed:
                 case var case1 when case1 == ResultOfAttack.Hit: {
                         _hits += 1;
+                        _shots += 1;
                         break;
                     }
 
                 case var case2 when case2 == ResultOfAttack.Miss: {
                         _misses += 1;
+                        _shots += 1;
                         break;
                     }
             }

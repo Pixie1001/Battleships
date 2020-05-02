@@ -1,4 +1,5 @@
 using SwinGameSDK;
+using System.Diagnostics;
 
 namespace battleship {
     public class GameLogic {
@@ -17,9 +18,7 @@ namespace battleship {
                 GameController.HandleUserInput();
                 GameController.DrawScreen();
             }
-            while (!SwinGame.WindowCloseRequested() == true || GameController.CurrentState == GameState.Quitting);
-
-            SwinGame.StopMusic();
+            while (!SwinGame.WindowCloseRequested() == true && GameController.CurrentState != GameState.Quitting);
 
             // Free Resources and Close Audio, to end the program.
             GameResources.FreeResources();

@@ -28,14 +28,22 @@ namespace battleship {
         private static Bitmap _loaderEmpty;
         private static Font _loadingFont;
 
+        //Stores currently playing BGM
         private static string _loopedSong = "";
 
+        //Plays SEs and BGM
         private static WaveOutEvent _audioPlayer = new WaveOutEvent();
         private static WaveOutEvent _musicPlayer = new WaveOutEvent();
 
         public static WaveOutEvent AudioPlayer {
             get {
                 return _audioPlayer;
+            }
+        }
+
+        public static WaveOutEvent MusicPlayer {
+            get {
+                return _musicPlayer;
             }
         }
 
@@ -69,6 +77,10 @@ namespace battleship {
             // Explosions
             NewImage("Explosion", "explosion.png");
             NewImage("Splash", "splash.png");
+
+            //Mute Button
+            NewImage("SoundOn", "sound_icon_enabled.png");
+            NewImage("SoundOff", "sound_icon_disabled.png");
         }
 
         private static void LoadSounds() {
@@ -162,6 +174,7 @@ namespace battleship {
             EndLoadingScreen(width, height);
         }
 
+        //Play a sound effect
         public static void PlaySound(string soundEffectName) {
             _sounds[soundEffectName].CurrentTime = TimeSpan.FromSeconds(0.0);
             _audioPlayer.Stop();
@@ -176,17 +189,14 @@ namespace battleship {
             }
         }
 
+        //Play a looping BGM track
         public static void PlayMusic(string musicName) {
-            //_sounds[musicName].CurrentTime = TimeSpan.FromSeconds(0.0);
-            //_audioPlayer.Stop();
-            //_audioPlayer.Init(_sounds[soundEffectName]);
-            //_audioPlayer.Play();
-
             if (_loopedSong == musicName && _musicPlayer.PlaybackState == PlaybackState.Playing) {
                 return;
             }
 
             _loopedSong = musicName;
+            _music[musicName].CurrentTime = TimeSpan.FromSeconds(0.0);
             _musicPlayer.Init(_music[musicName]);
             _musicPlayer.Play();
         }
