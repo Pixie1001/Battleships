@@ -51,7 +51,7 @@ namespace battleship {
             NewFont("ArialLarge", "arial.ttf", 80);
             NewFont("Courier", "cour.ttf", 14);
             NewFont("CourierSmall", "cour.ttf", 8);
-            NewFont("Menu", "arial.ttf", 25);
+            NewFont("Menu", "ffaccess.ttf", 8);
         }
 
         private static void LoadImages() {

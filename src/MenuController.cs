@@ -33,11 +33,11 @@ namespace battleship {
         ///     ''' </remarks>
         private static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT", "SAVE SCORE" }, new string[] { "RETURN", "SURRENDER", "QUIT",  }, new string[] { "EASY", "MEDIUM", "HARD" } };
 
-        private readonly static int MENU_TOP = 535;
+        private readonly static int MENU_TOP = 575;
         private readonly static int MENU_LEFT = 30;
-        private readonly static int MENU_GAP = -2;
-        private readonly static int BUTTON_WIDTH = 99;
-        private readonly static int BUTTON_HEIGHT = 25;
+        private readonly static int MENU_GAP = 0;
+        private readonly static int BUTTON_WIDTH = 75;
+        private readonly static int BUTTON_HEIGHT = 15;
         private readonly static int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
         private readonly static int TEXT_OFFSET = 0;
 
@@ -190,7 +190,7 @@ namespace battleship {
                 toDraw.Y = btnTop + TEXT_OFFSET;
                 toDraw.Width = BUTTON_WIDTH;
                 toDraw.Height = BUTTON_HEIGHT;
-                SwinGame.DrawText(_menuStructure[menu][i], MENU_COLOR, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, toDraw);
+                SwinGame.DrawText(_menuStructure[menu][i], MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, toDraw);
 
                 if (SwinGame.MouseDown(MouseButton.LeftButton) & IsMouseOverMenu(i, level, xOffset))
                     SwinGame.DrawRectangle(HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
