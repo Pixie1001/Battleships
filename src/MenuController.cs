@@ -31,7 +31,7 @@ namespace battleship {
         ///     ''' <remarks>
         ///     ''' These are the text captions for the menu items.
         ///     ''' </remarks>
-        private static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT" }, new string[] { "RETURN", "SURRENDER", "QUIT", "SAVE SCORE" }, new string[] { "EASY", "MEDIUM", "HARD" } };
+        private static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT", "SAVE SCORE" }, new string[] { "RETURN", "SURRENDER", "QUIT",  }, new string[] { "EASY", "MEDIUM", "HARD" } };
 
         private readonly static int MENU_TOP = 575;
         private readonly static int MENU_LEFT = 30;
@@ -276,6 +276,7 @@ namespace battleship {
                         sav.MyScores();
                         break;
                     }
+
             }
         }
 
