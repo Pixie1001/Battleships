@@ -243,6 +243,9 @@
     <Compile Include="src\Model\TileView.cs" />
     <Compile Include="src\UtilityFunctions.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\images\main_page.jpg" />
+  </ItemGroup>
   <Target Name="CopyLibsToOut">
     <Copy SourceFiles="@(WinLibs)" DestinationFolder="$(OutDir)" />
   </Target>
