@@ -15,7 +15,7 @@ namespace battleship
 
            
             
-            string[] lines = { "1: AAA 100", "2: BBB 90", "3: CCC 80", "4: DDD 70", "5: EEE 60", "6: FFF  50", "7: GGG 40", "8: III 30" };
+            string[] lines = { "1: AAA 100", "2: BBB 90", "3: CCC 80", "4: DDD 70", "5: EEE 60", "6: FFF  50", "7: GGG 40", "8: HHH 30",  "9: III 20", "10: JJJ 10"};
 
 
             System.IO.File.WriteAllLines(@"C:\Users\benya\Scores.txt", lines);
