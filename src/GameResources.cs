@@ -48,10 +48,10 @@ namespace battleship {
         }
 
         private static void LoadFonts() {
-            NewFont("ArialLarge", "arial.ttf", 80);
-            NewFont("Courier", "cour.ttf", 14);
+            NewFont("ArialLarge", "arial.ttf", 70);
+            NewFont("Courier", "cour.ttf", 11);
             NewFont("CourierSmall", "cour.ttf", 8);
-            NewFont("Menu", "ffaccess.ttf", 8);
+            NewFont("Menu", "arial.ttf", 25);
         }
 
         private static void LoadImages() {
@@ -208,7 +208,7 @@ namespace battleship {
             SwinGame.ProcessEvents();
 
             _animation = SwinGame.LoadBitmap(SwinGame.PathToResource("SwinGameAni.jpg", ResourceKind.BitmapResource));
-            _loadingFont = SwinGame.LoadFont(SwinGame.PathToResource("arial.ttf", ResourceKind.FontResource), 12);
+            _loadingFont = SwinGame.LoadFont(SwinGame.PathToResource("arial.ttf", ResourceKind.FontResource), 14);
             _loaderFull = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_full.png", ResourceKind.BitmapResource));
             _loaderEmpty = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_empty.png", ResourceKind.BitmapResource));
             NewSound("Start", "SwinGameStart.wav");
