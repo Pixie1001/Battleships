@@ -31,7 +31,7 @@ namespace battleship {
         ///     ''' <remarks>
         ///     ''' These are the text captions for the menu items.
         ///     ''' </remarks>
-        private static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT" }, new string[] { "RETURN", "SURRENDER", "QUIT" }, new string[] { "EASY", "MEDIUM", "HARD" } };
+        private static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT" }, new string[] { "RETURN", "SURRENDER", "QUIT", "SAVE SCORE" }, new string[] { "EASY", "MEDIUM", "HARD" } };
 
         private readonly static int MENU_TOP = 575;
         private readonly static int MENU_LEFT = 30;
@@ -49,6 +49,7 @@ namespace battleship {
         private const int MAIN_MENU_SETUP_BUTTON = 1;
         private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
         private const int MAIN_MENU_QUIT_BUTTON = 3;
+        private const int MAIN_MENU_SAVE_SCORES_BUTTON = 4;
 
         private const int SETUP_MENU_EASY_BUTTON = 0;
         private const int SETUP_MENU_MEDIUM_BUTTON = 1;
@@ -266,6 +267,13 @@ namespace battleship {
 
                 case MAIN_MENU_QUIT_BUTTON: {
                         GameController.AddNewState(GameState.Quitting);
+                        break;
+
+                    }
+                case MAIN_MENU_SAVE_SCORES_BUTTON:
+                    {
+                        SaveScores sav = new SaveScores();
+                        sav.MyScores();
                         break;
                     }
             }
