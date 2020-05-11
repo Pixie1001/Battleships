@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using SwinGameSDK;
-using NAudio.Wave;
 
 /// <summary>
 
@@ -92,17 +91,17 @@ namespace battleship {
                 case AIOption.Medium: {
                         _ai = new AIMediumPlayer(_theGame);
                         break;
-                }
+                    }
 
                 case AIOption.Hard: {
                         _ai = new AIHardPlayer(_theGame);
                         break;
-                }
+                    }
 
                 default: {
                         _ai = new AIHardPlayer(_theGame); // ERROR - should set to default AI or a new easy AI setting
                         break;
-                }
+                    }
             }
 
             _human = new Player(_theGame);
@@ -139,7 +138,7 @@ namespace battleship {
             if (showAnimation)
                 UtilityFunctions.AddExplosion(row, column);
 
-            GameResources.PlaySound("Hit");
+            Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -148,7 +147,7 @@ namespace battleship {
             if (showAnimation)
                 UtilityFunctions.AddSplash(row, column);
 
-            GameResources.PlaySound("Miss");
+            Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -173,18 +172,23 @@ namespace battleship {
             switch (result.Value) {
                 case ResultOfAttack.Destroyed: {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        GameResources.PlaySound("Sink");
+                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
                         break;
                     }
 
                 case ResultOfAttack.GameOver: {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        GameResources.PlaySound("Sink");
+                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+
+                        while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink"))) {
+                            SwinGame.Delay(10);
+                            SwinGame.RefreshScreen();
+                        }
 
                         if (HumanPlayer.IsDestroyed)
-                            GameResources.PlaySound("Lose");
+                            Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
                         else
-                            GameResources.PlaySound("Winner");
+                            Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
                         break;
                     }
 
@@ -199,7 +203,7 @@ namespace battleship {
                     }
 
                 case ResultOfAttack.ShotAlready: {
-                        GameResources.PlaySound("Error");
+                        Audio.PlaySoundEffect(GameResources.GameSound("Error"));
                         break;
                     }
             }
@@ -319,7 +323,6 @@ namespace battleship {
                     }
             }
 
-            UtilityFunctions.HandleMuteButton();
             UtilityFunctions.UpdateAnimations();
         }
 
@@ -370,7 +373,6 @@ namespace battleship {
             }
 
             UtilityFunctions.DrawAnimations();
-            UtilityFunctions.DrawMuteButton();
 
             SwinGame.RefreshScreen();
         }
