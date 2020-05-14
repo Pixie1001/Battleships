@@ -79,12 +79,29 @@ namespace battleship {
             }
         }
 
-        public Ship(ShipName ship) {
+        public Ship(ShipName ship)
+        {
             _shipName = ship;
             _tiles = new List<Tile>();
 
             // gets the ship size from the enumarator
             _sizeOfShip = (int)_shipName;
+            NewMethod();
+        }
+
+        private void NewMethod()
+        {
+            switch (_shipName)
+            {
+                case ShipName.Tug:
+                    _sizeOfShip = 2;
+                    break;
+
+                case ShipName.Submarine:
+                    _sizeOfShip = 3;
+                     break;
+
+            }
         }
 
         /// <summary>
